@@ -1,0 +1,26 @@
+.home {
+  margin: 3% 10% 3% 10%;
+}
+
+.home form {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.seating {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 10px;
+}
+
+.hello {
+  background-color: #ffffff;
+}
+
+.date-zone {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
