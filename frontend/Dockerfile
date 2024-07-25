@@ -1,4 +1,3 @@
-dockerfile for front end
 # Use the official Nginx image
 FROM nginx:alpine
 
