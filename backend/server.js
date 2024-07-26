@@ -2,7 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { pool } from './db'; // Assuming you have a db module for database connection
+import { Pool } from 'pg';
+import dotenv from 'dotenv';
 
 dotenv.config(); // Load environment variables from .env
 
