@@ -1,88 +1,88 @@
-import React, { useState } from "react";
-import "./index.css";
-import axios from "axios";
-
+import React, { useState } from 'react';
+import './registerForm.css';
 import { useNavigate } from "react-router-dom";
 
-const RegisterForm = () => {
-  const [employeeId, setEmployeeId] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
+const NewRegisterForm = () => {
+  const [employeeId, setEmployeeId] = useState('');
+  const [mobileNumber, setMobileNumber] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [defaultShift, setDefaultShift] = useState('');
+  const [defaultZone, setDefaultZone] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleNav = (e) => {
-    navigate("/login");
-  };
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (employeeId && email && password) {
-      try {
-        await axios.post("http://localhost:5000/register", {
-          username: email,
-          password,
-        });
-        setMessage("Registration successful!");
-        //navigate("/");
-      } catch (error) {
-        setMessage("Registration failed.");
-        console.error("Registration failed:", error);
-      }
-    } else {
-      setMessage("Please fill in all fields.");
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ employeeId, mobileNumber, email, password, defaultShift, defaultZone }),
+      });
+      const data = await response.json();
+      console.log(data.message); // "Employee registered successfully"
+      setError(null);
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
     }
   };
 
+  const handleLogin = (e) => {
+    navigate("/login");
+  };
+
   return (
-    <div className="register-main">
-      <div className="registration-container">
-        <h2 className="registration-title">Registration</h2>
-        {message && <p className="registration-message">{message}</p>}
-        <form onSubmit={handleSubmit} className="registration-form">
-          <div className="form-group">
-            <input
-              type="text"
-              value={employeeId}
-              onChange={(e) => setEmployeeId(e.target.value)}
-              className="form-input"
-              required
-            />
-            <label className="form-label">Employee ID</label>
-          </div>
-          <div className="form-group">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="form-input"
-              required
-            />
-            <label className="form-label">Email</label>
-          </div>
-          <div className="form-group">
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="form-input"
-              required
-            />
-            <label className="form-label">Password</label>
-          </div>
-          <button type="submit" className="form-button">
-            Register
-          </button>
-        </form>
-        <div className="login-link">
-          Already a Member?{" "}
-          <button className="login-btn" onClick={handleNav}>
+    <div className='main-register-cont'>
+    <div className="new-form-container">
+       <h2 className="register-title">Register</h2>
+      <form onSubmit={handleSubmit} className="new-form">
+        <div className="new-form-group">
+          <input type="text" id="employeeId" value={employeeId} onChange={(e) => setEmployeeId(e.target.value)} className="new-form-input" required />
+          <label htmlFor="employeeId" className="new-form-label">Employee ID</label>
+        </div>
+        <div className="new-form-group">
+          <input type="text" id="mobileNumber" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} className="new-form-input" required />
+          <label htmlFor="mobileNumber" className="new-form-label">Mobile Number</label>
+        </div>
+        <div className="new-form-group">
+          <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} className="new-form-input" required />
+          <label htmlFor="email" className="new-form-label">Email</label>
+        </div>
+        <div className="new-form-group">
+          <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} className="new-form-input" required />
+          <label htmlFor="password" className="new-form-label">Password</label>
+        </div>
+        <div className="new-form-group">
+          <select id="defaultShift" value={defaultShift} onChange={(e) => setDefaultShift(e.target.value)} className="new-form-input" required>
+            <option value="">Select Shift</option>
+            <option value="Morning Shift">Morning Shift</option>
+            <option value="Night Shift">Night Shift</option>
+          </select>
+          <label htmlFor="defaultShift" className="new-form-label">Default Shift</label>
+        </div>
+        <div className="new-form-group">
+          <select id="defaultZone" value={defaultZone} onChange={(e) => setDefaultZone(e.target.value)} className="new-form-input" required>
+            <option value="">Select Zone</option>
+            <option value="Zone A">Zone A</option>
+            <option value="Zone B">Zone B</option>
+          </select>
+          <label htmlFor="defaultZone" className="new-form-label">Default Zone</label>
+        </div>
+        <input type="submit" value="Register" className="new-form-submit" />
+        {error && <div className="new-error-message">{error}</div>}
+      </form>
+      <div className="signin-link">
+          Already registered ?{" "}
+          <button className="register-btn" onClick={handleLogin}>
             Login
           </button>
         </div>
-      </div>
+    </div>
     </div>
   );
 };
 
-export default RegisterForm;
+export default NewRegisterForm;

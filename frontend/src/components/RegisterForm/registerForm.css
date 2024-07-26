@@ -1,0 +1,153 @@
+/* Define a flexible container for the form */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(to right, #4e54c8, #8f94fb); /* Gradient background */
+}
+
+/* Style the form container */
+.new-form-container {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* Title style */
+.new-form-title {
+  margin-bottom: 1rem;
+  font-size: 24px;
+  color: #333;
+}
+
+/* Message style */
+.new-form-message {
+  color: green;
+  margin-bottom: 1rem;
+  font-size: 16px;
+}
+
+/* Form layout */
+.new-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for form group */
+.new-form-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+/* Input and select styles */
+.new-form-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 16px;
+  color: #333;
+  border: none;
+  border-bottom: 1px solid #333;
+  outline: none;
+  background: transparent;
+}
+
+/* Floating label effect */
+.new-form-input:focus ~ .new-form-label,
+.new-form-input:not(:placeholder-shown) ~ .new-form-label {
+  top: -20px;
+  left: 0;
+  color: #4e54c8;
+  font-size: 12px;
+}
+
+/* Button style */
+.new-form-submit {
+  background: #4e54c8;
+  border: none;
+  color: #fff;
+  padding: 0.75rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.new-form-submit:hover {
+  background: #8f94fb;
+}
+
+/* Error message style */
+.new-error-message {
+  color: red;
+  margin-top: 1rem;
+}
+
+/* Optional: style for links */
+.new-signup-link {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.new-signup-link a {
+  color: #4e54c8;
+  text-decoration: none;
+}
+
+.new-form-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  color: #333;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.form-input:focus ~ .new-form-label,
+.form-input:valid ~ .new-form-label {
+  top: -20px;
+  left: 0;
+  color: #4e54c8;
+  font-size: 12px;
+}
+
+.login-title {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.signin-link {
+  margin-top: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.signin-link .register-btn {
+  background: none;
+  border: none;
+  color: #4e54c8;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+}
+
+.register-title{
+  text-align: center;
+}
+
+.main-register-cont{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2%;
+}

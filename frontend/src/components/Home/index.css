@@ -24,3 +24,42 @@
   justify-content: space-around;
   width: 100%;
 }
+
+.book-seat-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.book-seat-container button {
+  margin: 10px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.book-seat-container button:first-of-type {
+  background-color: #4e54c8;
+  color: #fff;
+}
+
+.book-seat-container button:first-of-type:hover {
+  background-color: #8f94fb;
+}
+
+.book-seat-container button:last-of-type {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+.book-seat-container button:last-of-type:hover {
+  background-color: #c9302c;
+}

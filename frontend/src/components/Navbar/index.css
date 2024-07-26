@@ -7,9 +7,6 @@
   padding: 3% 15% 3% 10%;
 }
 
-.navbar-left {
-}
-
 .navbar-right {
   display: flex;
   flex-direction: row;

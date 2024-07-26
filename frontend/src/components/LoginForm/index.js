@@ -4,7 +4,8 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  const { logOfEmployeeDetails } = props;
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -36,9 +37,11 @@ const LoginForm = () => {
           username: email,
           password,
         });
+        const employeeId = response.data.employee.id;
         setCookie("user", response.data.cookie, { path: "/" });
         setMessage("Login successful!");
-        navigate("/seats");
+        logOfEmployeeDetails(employeeId)
+        navigate("/home");
       } catch (error) {
         setMessage("Login failed. Please check your credentials.");
         console.error("Login failed:", error);
@@ -62,7 +65,7 @@ const LoginForm = () => {
               className="form-input"
               required
             />
-            <label className="form-label">User Id</label>
+            <label className="form-label">Email</label>
           </div>
           <div className="form-group">
             <input

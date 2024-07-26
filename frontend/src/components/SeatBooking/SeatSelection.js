@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SeatBookingModal from './SeatBookingModal';
+import SeatBookingModal from '../SeatBookingModal'
 
 const SeatSelection = () => {
   const [selectedSeat, setSelectedSeat] = useState(null);
