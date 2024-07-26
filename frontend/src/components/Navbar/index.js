@@ -15,8 +15,8 @@ const Navbar = () => {
           <Link to="/profile" className="navbar-link">
             Profile
           </Link>
-          <Link to="/register" className="navbar-link">
-            History
+          <Link to="/insights" className="navbar-link">
+            insights
           </Link>
           <Link to="/register" className="navbar-link">
             Log-out

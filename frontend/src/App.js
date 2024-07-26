@@ -6,6 +6,7 @@ import RegisterForm from "./components/RegisterForm";
 import React, { useState } from 'react';
 import SeatSelection from "./components/SeatBooking/SeatSelection";
 import Profile from "./components/Profile";
+import Insights from "./components/Insights"
 
 export default function App() {
   const [employee_id,setEmployee_id] = useState("");
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/seats" element={<SeatSelection />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/insights" element={<Insights />} />
       </Routes>
     </BrowserRouter>
   );
