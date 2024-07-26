@@ -1,13 +1,14 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import { Pool } from 'pg';
+import pkg from 'pg';
+
+const { Pool } = pkg;
 
 dotenv.config(); // Load environment variables from .env
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
