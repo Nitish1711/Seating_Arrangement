@@ -10,6 +10,8 @@ const Home = () => {
   const [showBookSeat, setShowBookSeat] = useState(false);
   const [selectedSeat, setSelectedSeat] = useState(null);
   const [employeeDetails, setEmployeeDetails] = useState({});
+  const [successMessage, setSuccessMessage] = useState("True");
+  const [seat, setSeats] = useState([]);
 
   useEffect(() => {
     const currentDate = new Date();
@@ -48,37 +50,40 @@ const Home = () => {
     fetchSeats();
   }, [zone, date]);
 
-  const handleSeatClick = (seat) => {
-    console.log(seat); // should log the entire seat object
-    setSelectedSeat(seat);
-    setShowBookSeat(true);
-  };
-
-  const handleBookSeat = async () => {
+   const handleBookSeat = async () => {
     try {
       const response = await fetch(
         `${process.env.REACT_APP_API_URL}/book-seat?seatId=${selectedSeat.id}`,
         {
           method: "POST",
         }
-      );
+      )
       const data = await response.json();
-      // if (data.success) {
-      //   // Update the seat status in the state
-      //   setSeats((prevSeats) =>
-      //     prevSeats.map((seat) =>
-      //       seat.id === selectedSeat.id ? { ...seat, is_booked: true } : seat
-      //     )
-      //   );
-      // }
+      if (data.success) {
+        // Update the seat status in the state
+        setSeats((prevSeats) =>
+          prevSeats.map((seat) =>
+            seat.id === selectedSeat.id ? { ...seat, is_booked: true } : seat
+          )
+        );
+        setSuccessMessage("Seat booked successfully!");
+      }
     } catch (error) {
       console.error(error);
+      setSuccessMessage("Failed to book seat. Please try again.");
     }
     setShowBookSeat(false);
   };
 
   const handleCancel = () => {
     setShowBookSeat(false);
+  };
+
+
+  const handleSeatClick = (seat) => {
+    console.log(seat); // should log the entire seat object
+    setSelectedSeat(seat);
+    setShowBookSeat(true);
   };
 
   const seats = Array.from({ length: 30 }, (_, i) => ({
@@ -132,6 +137,10 @@ const Home = () => {
             <button onClick={handleCancel}>Cancel</button>
           </div>
         )}
+         {successMessage && (
+          <div className="success-message">{successMessage}</div>
+        )}
+
       </div>
     </div>
   );

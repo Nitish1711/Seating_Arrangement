@@ -1,0 +1,92 @@
+.register-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .registration-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+  }
+  
+  .registration-title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .registration-message {
+    color: green;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #333;
+    border: none;
+    border-bottom: 1px solid #333;
+    outline: none;
+    background: transparent;
+  }
+  
+  .form-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #333;
+    pointer-events: none;
+    transition: 0.5s;
+  }
+  
+  .form-input:focus ~ .form-label,
+  .form-input:valid ~ .form-label {
+    top: -20px;
+    left: 0;
+    color: #4e54c8;
+    font-size: 12px;
+  }
+  
+  .form-button {
+    background: #4e54c8;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+  }
+  
+  .form-button:hover {
+    background: #8f94fb;
+  }
+  
+  .login-link {
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .login-link .login-btn {
+    background: none;
+    border: none;
+    color: #4e54c8;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0;
+    font-size: 14px;
+  }

@@ -5,6 +5,7 @@ import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
 import React, { useState } from 'react';
 import SeatSelection from "./components/SeatBooking/SeatSelection";
+import Profile from "./components/Profile";
 
 export default function App() {
   const [employee_id,setEmployee_id] = useState("");
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/login" element={<LoginForm logOfEmployeeDetails={logOfEmployeeDetails} />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/seats" element={<SeatSelection />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
