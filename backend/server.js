@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { Pool } from 'pg';
-import dotenv from 'dotenv';
 
 dotenv.config(); // Load environment variables from .env
 
