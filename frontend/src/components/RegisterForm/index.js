@@ -16,11 +16,21 @@ const NewRegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ employeeId, mobileNumber, email, password, defaultShift, defaultZone }),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/api/auth/register`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            employeeId,
+            mobileNumber,
+            email,
+            password,
+            defaultShift,
+            defaultZone,
+          }),
+        }
+      );
       const data = await response.json();
       console.log(data.message); // "Employee registered successfully"
       setError(null);
@@ -29,6 +39,7 @@ const NewRegisterForm = () => {
       setError(error.message);
     }
   };
+  
 
   const handleLogin = (e) => {
     navigate("/login");

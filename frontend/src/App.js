@@ -17,7 +17,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/home" element={<Home employee_id={employee_id}/>} />
+        <Route path="/" element={<Home employee_id={employee_id}/>} />
         <Route path="/login" element={<LoginForm logOfEmployeeDetails={logOfEmployeeDetails} />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/seats" element={<SeatSelection />} />

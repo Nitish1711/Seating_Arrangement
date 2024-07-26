@@ -9,23 +9,11 @@ const LoginForm = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies, setCookie] = useCookies(["user"]);
 
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      await axios.post('http://localhost:5000/logout', {
-        cookie: cookies.user,
-      });
-      removeCookie('user', { path: '/' });
-      navigate("/");
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  };
-
-  const handleNav = (e) => {
+  const handleNav = () => {
     navigate("/register");
   };
 
@@ -33,14 +21,17 @@ const LoginForm = (props) => {
     e.preventDefault();
     if (email && password) {
       try {
-        const response = await axios.post("http://localhost:3000/login", {
-          username: email,
-          password,
-        });
+        const response = await axios.post(
+          `${process.env.REACT_APP_API_URL}/login`,
+          {
+            username: email,
+            password,
+          }
+        );
         const employeeId = response.data.employee.id;
         setCookie("user", response.data.cookie, { path: "/" });
         setMessage("Login successful!");
-        logOfEmployeeDetails(employeeId)
+        logOfEmployeeDetails(employeeId);
         navigate("/home");
       } catch (error) {
         setMessage("Login failed. Please check your credentials.");
