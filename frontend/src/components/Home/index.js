@@ -10,7 +10,7 @@ const Home = () => {
   const [showBookSeat, setShowBookSeat] = useState(false);
   const [selectedSeat, setSelectedSeat] = useState(null);
   const [employeeDetails, setEmployeeDetails] = useState({});
-  const [successMessage, setSuccessMessage] = useState("True");
+  const [successMessage, setSuccessMessage] = useState("");
   const [seat, setSeats] = useState([]);
 
   useEffect(() => {
@@ -66,11 +66,11 @@ const Home = () => {
             seat.id === selectedSeat.id ? { ...seat, is_booked: true } : seat
           )
         );
-        setSuccessMessage("Seat booked successfully!");
+        setSuccessMessage("Failed to book seat. Please try again.");
       }
     } catch (error) {
       console.error(error);
-      setSuccessMessage("Failed to book seat. Please try again.");
+      setSuccessMessage("Seat booked successfully!");
     }
     setShowBookSeat(false);
   };
